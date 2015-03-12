@@ -2,11 +2,11 @@ env:
   global:
     - GCC_VERSION=4.9
     - LIBSTDC_VERSION=4.9
-    - CLANG_VERSION=3.5
  
 before_install:
   - echo "deb http://llvm.org/apt/precise/ llvm-toolchain-precise main" | sudo tee -a /etc/apt/sources.list
   - echo "deb http://llvm.org/apt/precise/ llvm-toolchain-precise-3.5 main" | sudo tee -a /etc/apt/sources.list
+  - echo "deb http://llvm.org/apt/precise/ llvm-toolchain-precise-3.6 main" | sudo tee -a /etc/apt/sources.list
   - echo "deb http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu precise main" | sudo tee -a /etc/apt/sources.list
   - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
   - sudo apt-get update -qq
@@ -14,13 +14,12 @@ before_install:
 install:
   - sudo apt-get -qq install build-essential
   - sudo apt-get -qq --allow-unauthenticated install libstdc++-${LIBSTDC_VERSION}-dev
-  - sudo apt-get -qq --allow-unauthenticated install clang-${CLANG_VERSION}
+  - sudo apt-get -qq --allow-unauthenticated install clang-3.5
+  - sudo apt-get -qq --allow-unauthenticated install clang-3.6
   - sudo apt-get -qq install g++-${GCC_VERSION}
  
 script:
-  - g++-4.9 --version
   - g++-4.9 -std=c++14 -Wall -Wextra -pedantic test/static_if.cpp && ./a.out
-  - clang++ --version
-  - clang++-3.5 --version
   - clang++-3.5 -std=c++14 -Wall -Wextra -pedantic test/static_if.cpp && ./a.out
+  - clang++-3.6 -std=c++14 -Wall -Wextra -pedantic test/static_if.cpp && ./a.out
     
