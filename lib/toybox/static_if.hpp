@@ -7,14 +7,14 @@ namespace toybox{
 
 template<typename Then, typename Else>
 auto
-static_if(std::integral_constant<bool, true>, Then then, Else else_){
+static_if(std::integral_constant<bool, true>, Then then, Else){
 	return then;
 }
 
 
 template<typename Then, typename Else>
 auto
-static_if(std::integral_constant<bool, false>, Then then, Else else_){
+static_if(std::integral_constant<bool, false>, Then, Else else_){
 	return else_;
 }
 
