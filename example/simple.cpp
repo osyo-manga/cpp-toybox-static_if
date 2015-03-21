@@ -1,15 +1,3 @@
-[![Build Status](https://travis-ci.org/osyo-manga/cpp-toybox-static_if.svg?branch=master)](https://travis-ci.org/osyo-manga/cpp-toybox-static_if)
-
-# static_if
-
-## Requirement
-
-* C++14 or above
- * Need Generic lambda expression.
-
-## Example
-
-```cpp
 #include <toybox/static_if.hpp>
 #include <boost/type_traits/has_plus.hpp>
 #include <iostream>
@@ -39,5 +27,3 @@ main(){
 	// => Error
 	return 0;
 }
-```
-
